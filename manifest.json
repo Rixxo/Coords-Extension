@@ -1,0 +1,34 @@
+{
+
+  "manifest_version": 2,
+  "name": "Coords",
+  "version": "0.7.0",
+
+  "description": "Coords is a tool that helps finding out the mouse coordinates on the screen. Measure width and height of shapes, and draw shapes on the screen.",
+
+  "icons": {
+    "16": "icons/coords-16.png",
+    "32": "icons/coords-32.png",
+    "48": "icons/coords-48.png",
+    "64": "icons/coords-64.png",
+    "96": "icons/coords-96.png",
+    "128": "icons/coords-128.png"
+  },
+  "permissions": [ "activeTab"],
+  "background": {
+    "scripts": [
+      "lib/browser-polyfill.min.js",
+      "coords.js"
+      
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/coords-16.png",
+      "32": "icons/coords-32.png",
+      "64": "icons/coords-64.png"
+    },
+    "default_title": "Coords"
+  }
+}
+
