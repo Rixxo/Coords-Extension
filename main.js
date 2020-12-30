@@ -191,6 +191,17 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+window.addEventListener("resize", () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  app.renderer.resize(width, height);
+  app.stage.hitArea.width = width;
+  app.stage.hitArea.height = height;
+
+  resizeLine(lineH, 0, 0, width, 0);
+  resizeLine(lineV, 0, 0, 0, width);
+});
+
 
 function destroyPoints() {
   if (points.length < 1) return;
