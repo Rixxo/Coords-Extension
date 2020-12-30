@@ -1,8 +1,8 @@
 # Coords
 ## Overview
-Coords is a useful tool that helps you finding out the mouse coordinates on the screen. 
+Coords is a useful tool that helps you finding out the mouse coordinates on the screen.
 
-You can draw point/shape on the screen and discover their coordintas or measure width and height of anything and on the screen and learn its dimention in terms of pixel.
+You can draw points/shapes on the screen and discover their coordinates, or measure width and height of anything on the screen, and learn its dimension in terms of pixel.
 
 ## Screenshoots
 
@@ -23,7 +23,7 @@ You can draw point/shape on the screen and discover their coordintas or measure 
 2. Click on Coords icon to activate/deactivate it
 3. Move your mouse around to learn its position
 4. Special functions:
-    1. Click on the sreen to draw a point
+    1. Click on the screen to draw a point
     2. Multiple points are joined to create shapes
     3. Click and drag to measure the shapes
 5. Shortcut:
