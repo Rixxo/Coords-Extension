@@ -45,6 +45,7 @@ app.stage.hitArea = new PIXI.Rectangle(0, 0, width, height);
 // declaration global vars
 const PointSize = 3;
 const DragTrashHold = 10;
+const StrokeSize = 1;
 const DeleteKeyLower = "d";
 const ClearKeyLower = "c";
 const DeleteKeyUpper = "D";
@@ -71,9 +72,9 @@ let rectWidthText = text(measureCont, null, 0, 0, defaultTextStyle);
 let rectHeightText = text(measureCont, null, 0, 0, defaultTextStyle);
 
 // Construct 
-let lineH = line(crossCont, 0, 0, width, 0, new LineOptions(new Color(0xCE2906), 2));
-let lineV = line(crossCont,0, 0, 0, height, new LineOptions(new Color(0xCE2906), 2));
-let target = point(crossCont,0, 0, 5, new PointOptions(new Color(0x000000, 0), 2, new Color(0xCE2906, 1)));
+let lineH = line(crossCont, 0, 0, width, 0, new LineOptions(new Color(0xCE2906), StrokeSize));
+let lineV = line(crossCont,0, 0, 0, height, new LineOptions(new Color(0xCE2906), StrokeSize));
+let target = point(crossCont,0, 0, 5, new PointOptions(new Color(0x000000, 0), StrokeSize, new Color(0xCE2906, 1)));
 let mainCoordsText = text(crossCont, null, 0, 0, defaultTextStyle);
 
 app.stage.addChild(pointsCont);

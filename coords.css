@@ -5,6 +5,5 @@
     top: 0px;
     position: fixed; 
     cursor: crosshair; 
-    z-index:9000000001; 
-    background: rgba(0, 0, 0, 0.2) none repeat scroll 0% 0%;
+    z-index:9000000001;
 }
