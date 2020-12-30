@@ -4,7 +4,7 @@
   "name": "Coords",
   "version": "0.7.0",
 
-  "description": "Coords is a tool that helps finding out the mouse coordinates on the screen. Measure width and height of shapes, and draw shapes on the screen.",
+  "description": "Coords is a useful tool that helps you finding out the mouse coordinates on the screen.\nYou can draw point/shape on the screen and discover their coordintas or measure width and height of anything and on the screen and learn its dimention in terms of pixel.",
 
   "icons": {
     "16": "icons/coords-16.png",
