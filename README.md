@@ -13,7 +13,7 @@ You can draw point/shape on the screen and discover their coordintas or measure 
 ![Shape with points and point coordinates](/images/Coords_point_with_coords.png)
 
 ### Shape with points
-![Shape with points](/images/Coords_point_without_coords.png)
+![Shape with points](/images/Coords_points_without_coords.png)
 
 ### Measure shape
 ![Measure shape](/images/Coords_measure.png)
