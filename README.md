@@ -7,16 +7,16 @@ You can draw point/shape on the screen and discover their coordintas or measure 
 ## Screenshoots
 
 ### Mouse coordinates
-![Mouse coordinates](/images/Coords_cross.png)
+![Mouse coordinates](/images/Coords_mouse_coords.png)
 
 ### Shape with points and point coordinates
-![Shape with points and point coordinates](/images/Coords_shape_with_coords.png)
+![Shape with points and point coordinates](/images/Coords_point_with_coords.png)
 
 ### Shape with points
-![Shape with points](/images/Coords_hidden_points.png)
+![Shape with points](/images/Coords_point_without_coords.png)
 
 ### Measure shape
-![Measure shape](/images/Coords_measure_shape.png)
+![Measure shape](/images/Coords_measure.png)
 
 ## How to use it
 1. Add Coords as an extension to your browser
