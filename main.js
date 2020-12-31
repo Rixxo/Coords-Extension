@@ -155,7 +155,7 @@ app.stage.mousemove =  (e) => {
 
     if (rectangle.x > x) {
       rectHeightText.setPosX(x-rectHeightTextBounds.width);
-      rectWidthText.setPosX(rect.x);
+      rectWidthText.setPosX(rectangle.x);
     }
 
     if (x < rectangle.x && y < rectangle.y){
