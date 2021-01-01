@@ -52,6 +52,8 @@ const DeleteKeyUpper = "D";
 const ClearKeyUpper = "C";
 const HideTextLower = "h";
 const HideTextUpper = "H";
+const HideCrossLower = "p";
+const HideCrossUpper = "P";
 
 let crossCont = new PIXI.Container();
 let measureCont = new PIXI.Container();
@@ -188,6 +190,10 @@ window.addEventListener("keydown", (e) => {
     case HideTextUpper:
       hideText();
       break;
+    case HideCrossLower:
+    case HideCrossUpper:
+      hideCross();
+      break;
   }
 });
 
@@ -241,4 +247,10 @@ function clearRectData() {
   rectangle.clear();
   rectHeightText.clear();
   rectWidthText.clear();
+}
+
+function hideCross() {
+  lineV.alpha = !lineV.alpha;
+  lineH.alpha = !lineH.alpha;
+  target.alpha = !target.alpha;
 }
