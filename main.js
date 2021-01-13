@@ -46,6 +46,8 @@ app.stage.hitArea = new PIXI.Rectangle(0, 0, width, height);
 const PointSize = 3;
 const DragTrashHold = 10;
 const StrokeSize = 1;
+const lineLength = 20;
+const gap = 5;
 const DeleteKeyLower = "d";
 const ClearKeyLower = "c";
 const DeleteKeyUpper = "D";
@@ -73,10 +75,13 @@ let rectangle = rect(measureCont, 0, 0, 0, 0, new RectOptions(new Color(0xCE2906
 let rectWidthText = text(measureCont, null, 0, 0, defaultTextStyle);
 let rectHeightText = text(measureCont, null, 0, 0, defaultTextStyle);
 
+var maxLineWidth = Math.ceil(width/(lineLength+gap))*(lineLength+gap);
+var maxLineHeight = Math.ceil(height/(lineLength+gap))*(lineLength+gap);
+
 // Construct 
-let lineH = line(crossCont, 0, 0, width, 0, new LineOptions(new Color(0xCE2906), StrokeSize));
-let lineV = line(crossCont,0, 0, 0, height, new LineOptions(new Color(0xCE2906), StrokeSize));
-let target = point(crossCont,0, 0, 5, new PointOptions(new Color(0x000000, 0), StrokeSize, new Color(0xCE2906, 1)));
+let defaultLineOptions = new LineOptions(new Color(0xCE2906), StrokeSize, LineType.DASHED);
+let lineH = line(crossCont, 0, 0, width, 0, defaultLineOptions);
+let lineV = line(crossCont,0, 0, 0, height, defaultLineOptions);
 let mainCoordsText = text(crossCont, null, 0, 0, defaultTextStyle);
 
 app.stage.addChild(pointsCont);
@@ -125,8 +130,6 @@ app.stage.mousemove =  (e) => {
   const y = e.data.global.y;
   lineH.y = y;
   lineV.x = x;
-  target.x = x;
-  target.y = y;
   mainCoordsText.setText("x: "+x.toFixed(0)+", y: "+y.toFixed(0));
   mainCoordsText.setPosX(x + 5);
   mainCoordsText.setPosY(y - 20);
@@ -204,8 +207,8 @@ window.addEventListener("resize", () => {
   app.stage.hitArea.width = width;
   app.stage.hitArea.height = height;
 
-  resizeLine(lineH, 0, 0, width, 0);
-  resizeLine(lineV, 0, 0, 0, width);
+  resizeLine(lineH, maxLineWidth, 0, width, 0, defaultLineOptions);
+  resizeLine(lineV, 0, maxLineHeight, 0, height, defaultLineOptions);
 });
 
 
@@ -252,5 +255,4 @@ function clearRectData() {
 function hideCross() {
   lineV.alpha = !lineV.alpha;
   lineH.alpha = !lineH.alpha;
-  target.alpha = !target.alpha;
 }
