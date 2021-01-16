@@ -48,6 +48,7 @@ const DragTrashHold = 10;
 const StrokeSize = 1;
 const lineLength = 20;
 const gap = 10;
+const padding = 5;
 const DeleteKeyLower = "d";
 const ClearKeyLower = "c";
 const DeleteKeyUpper = "D";
@@ -67,9 +68,9 @@ let mouseClicked = false;
 let isTextHidden = false;
 let defaultTextStyle = new PIXI.TextStyle({
   fontFamily: "Arial",
-  fontSize: 14,
+  fontSize: 12,
   fontWeight: 'bold',
-  fill: "#CE2906"
+  fill: "white"
 });
 let rectangle = rect(measureCont, 0, 0, 0, 0, new RectOptions(new Color(0xCE2906, 0.2),  0));
 let rectWidthText = text(measureCont, null, 0, 0, defaultTextStyle);
@@ -106,7 +107,7 @@ app.stage.mouseup = (e) => {
     points.push(
       new TextPoint(
         point(pointsCont, x, y, PointSize, new PointOptions(new Color(0xCE2906), 0)), 
-        text(pointsCont, "x: "+x.toFixed(0)+", y: "+y.toFixed(0), x+2, y+2, defaultTextStyle)));
+        text(pointsCont, "x: "+x.toFixed(0)+"px\ny: "+y.toFixed(0)+"px", x+2, y+2, defaultTextStyle)));
 
     if (isTextHidden) {
       points[points.length-1].text.setAlpha(0);
@@ -127,9 +128,10 @@ app.stage.mousemove =  (e) => {
   const y = e.data.global.y;
   lineH.y = y;
   lineV.x = x;
-  mainCoordsText.setText("x: "+x.toFixed(0)+", y: "+y.toFixed(0));
-  mainCoordsText.setPosX(x + 5);
-  mainCoordsText.setPosY(y - 20);
+  mainCoordsText.setText("x: "+x.toFixed(0)+"px\ny: "+y.toFixed(0)+"px");
+  mainCoordsText.setPosX(x + 10);
+  let yOffset = mainCoordsText.background.getBounds().height+10;
+  mainCoordsText.setPosY(y - yOffset);
   mainCoordsText.updateBackgroundBounds();
 
   if (didMove(x, y))
@@ -137,33 +139,33 @@ app.stage.mousemove =  (e) => {
     rectangle.clear();
     rectangle.drawRect(0, 0,x - rectangle.x, y - rectangle.y);
     let rectBounds = rectangle.getBounds();
-    rectHeightText.setText(rectBounds.height.toFixed(0)+"px");
-    rectWidthText.setText(rectBounds.width.toFixed(0)+"px");
+    rectHeightText.setText("h: "+rectBounds.height.toFixed(0)+"px");
+    rectWidthText.setText("w: "+rectBounds.width.toFixed(0)+"px");
     
-    let rectHeightTextBounds = rectHeightText.text.getBounds();
+    let rectHeightBounds = rectHeightText.background.getBounds();
 
     if (rectangle.y > y) {
-      rectHeightText.setPosX(rectangle.x-rectHeightTextBounds.width);
-      rectHeightText.setPosY(rectangle.y-rectHeightTextBounds.height);
+      rectHeightText.setPosX(rectangle.x-rectHeightBounds.width);
+      rectHeightText.setPosY(rectangle.y-rectHeightBounds.height);
       rectWidthText.setPosX(x);
       rectWidthText.setPosY(y);
     }  else {
-      rectHeightText.setPosX(rectangle.x-rectHeightTextBounds.width);
-      rectHeightText.setPosY(y-rectHeightTextBounds.height);
+      rectHeightText.setPosX(rectangle.x-rectHeightBounds.width);
+      rectHeightText.setPosY(y-rectHeightBounds.height);
 
       rectWidthText.setPosX(x);
       rectWidthText.setPosY(rectangle.y);
     }
 
     if (rectangle.x > x) {
-      rectHeightText.setPosX(x-rectHeightTextBounds.width);
+      rectHeightText.setPosX(x-rectHeightBounds.width);
       rectWidthText.setPosX(rectangle.x);
     }
 
     if (x < rectangle.x && y < rectangle.y){
 
-      rectHeightText.setPosX(x-rectHeightTextBounds.width);
-      rectHeightText.setPosY(rectangle.y-rectHeightTextBounds.height);
+      rectHeightText.setPosX(x-rectHeightBounds.width);
+      rectHeightText.setPosY(rectangle.y-rectHeightBounds.height);
 
       rectWidthText.setPosX(rectangle.x);
       rectWidthText.setPosY(y);
