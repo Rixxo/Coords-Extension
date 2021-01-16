@@ -129,9 +129,23 @@ app.stage.mousemove =  (e) => {
   lineH.y = y;
   lineV.x = x;
   mainCoordsText.setText("x: "+x.toFixed(0)+"px\ny: "+y.toFixed(0)+"px");
-  mainCoordsText.setPosX(x + 10);
-  let yOffset = mainCoordsText.background.getBounds().height+10;
-  mainCoordsText.setPosY(y - yOffset);
+  let mainCoordsBounds = mainCoordsText.background.getBounds();
+
+  let offset = 10;
+  let xOffset = x + offset;
+  let yOffset = y- mainCoordsBounds.height - offset;
+  if (x > window.innerWidth - mainCoordsBounds.width - offset) 
+  {
+    xOffset = x - mainCoordsBounds.width - offset;
+  }
+
+  if (y < mainCoordsBounds.height + offset) 
+  {
+    yOffset = y + offset;
+  }
+
+  mainCoordsText.setPosX(xOffset);
+  mainCoordsText.setPosY(yOffset);
   mainCoordsText.updateBackgroundBounds();
 
   if (didMove(x, y))
