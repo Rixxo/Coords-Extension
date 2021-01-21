@@ -80,6 +80,7 @@ let rectHeightText = text(measureCont, null, 0, 0, defaultTextStyle);
 let defaultLineOptions = new LineOptions(new Color(0xCE2906), StrokeSize, LineType.DASHED);
 let lineH = line(crossCont, 0, 0, width, 0, defaultLineOptions);
 let lineV = line(crossCont,0, 0, 0, height, defaultLineOptions);
+let target = point(crossCont,0, 0, 5, new PointOptions(new Color(0x000000, 0), 2, new Color(0xCE2906, 0.5)));
 let mainCoordsText = text(crossCont, null, 0, 0, defaultTextStyle);
 
 app.stage.addChild(pointsCont);
@@ -128,6 +129,8 @@ app.stage.mousemove =  (e) => {
   const y = e.data.global.y;
   lineH.y = y;
   lineV.x = x;
+  target.x = x;
+  target.y = y;
   mainCoordsText.setText("x: "+x.toFixed(0)+"px\ny: "+y.toFixed(0)+"px");
   let mainCoordsBounds = mainCoordsText.background.getBounds();
 

@@ -4,6 +4,7 @@
     right: 0px; 
     top: 0px;
     position: fixed; 
-    cursor: crosshair; 
+    cursor: none; 
     z-index:9000000001;
 }
+
