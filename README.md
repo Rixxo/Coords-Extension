@@ -9,6 +9,9 @@ You can draw points/shapes on the screen and discover their coordinates, or meas
 ### Mouse coordinates
 ![Mouse coordinates](/images/Coords_mouse_coords.png)
 
+### Mouse coordinates with lines
+![Mouse coordinates](/images/Coords_mouse_coords_with_lines.png)
+
 ### Shape with points and point coordinates
 ![Shape with points and point coordinates](/images/Coords_point_with_coords.png)
 
