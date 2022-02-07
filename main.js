@@ -49,10 +49,12 @@ const StrokeSize = 1;
 const lineLength = 20;
 const gap = 10;
 const padding = 5;
+// Keys code to capture actions
 const DeleteKeyLower = "d";
-const ClearKeyLower = "c";
 const DeleteKeyUpper = "D";
+const ClearKeyLower = "c";
 const ClearKeyUpper = "C";
+const ClearKeyEsc = "Escape";
 const HideTextLower = "h";
 const HideTextUpper = "H";
 const HideCrossLower = "p";
@@ -124,6 +126,7 @@ app.stage.mouseup = (e) => {
   mouseClicked = false;
 }; 
 
+// Updatd target postions and the cross graphic with the movement of the moue.
 app.stage.mousemove =  (e) => {
   const x = e.data.global.x;
   const y = e.data.global.y;
@@ -161,27 +164,43 @@ app.stage.mousemove =  (e) => {
     
     let rectHeightBounds = rectHeightText.background.getBounds();
 
+
+    // If the width measurments label is getting out of the screen move the position back 
+    // to guarantee it stays within the screen bounds.
+    let recWidthX = x;
+    if (x > window.innerWidth - rectHeightBounds.width - offset) 
+    {
+      recWidthX = x - rectHeightBounds.width - offset;
+    }
+
     if (rectangle.y > y) {
       rectHeightText.setPosX(rectangle.x-rectHeightBounds.width);
       rectHeightText.setPosY(rectangle.y-rectHeightBounds.height);
-      rectWidthText.setPosX(x);
+      rectWidthText.setPosX(recWidthX);
       rectWidthText.setPosY(y);
-    }  else {
+    }  else {      
       rectHeightText.setPosX(rectangle.x-rectHeightBounds.width);
       rectHeightText.setPosY(y-rectHeightBounds.height);
 
-      rectWidthText.setPosX(x);
+      rectWidthText.setPosX(recWidthX);
       rectWidthText.setPosY(rectangle.y);
     }
 
+    // If the height measurments label is getting out of the screen move the position back 
+    // to guarantee it stays within the screen bounds.
+    let recHeightX = x-rectHeightBounds.width;
+    if (x < rectHeightBounds.width) 
+    {
+      recHeightX = x + offset;
+    }
+
     if (rectangle.x > x) {
-      rectHeightText.setPosX(x-rectHeightBounds.width);
+      rectHeightText.setPosX(recHeightX);
       rectWidthText.setPosX(rectangle.x);
     }
 
     if (x < rectangle.x && y < rectangle.y){
-
-      rectHeightText.setPosX(x-rectHeightBounds.width);
+      rectHeightText.setPosX(recHeightX);
       rectHeightText.setPosY(rectangle.y-rectHeightBounds.height);
 
       rectWidthText.setPosX(rectangle.x);
@@ -194,6 +213,7 @@ app.stage.mousemove =  (e) => {
   }
 };
 
+// Record which key has been pressed and initiate cleaning actions associated with the specific key action
 window.addEventListener("keydown", (e) => {
   switch(e.key) {
     case DeleteKeyLower:
@@ -202,6 +222,7 @@ window.addEventListener("keydown", (e) => {
       break;
     case ClearKeyLower:
     case ClearKeyUpper:
+    case ClearKeyEsc:
       destroyAllPoints();
       clearRectData();
       break;

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Coords",
-  "version": "0.9.5",
+  "version": "0.9.6",
 
   "description": "Coords helps you finding out the mouse coordinates, draw points/shapes and measure width and height of anything and on the screen.",
 

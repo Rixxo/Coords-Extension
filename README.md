@@ -32,5 +32,5 @@ You can draw points/shapes on the screen and discover their coordinates, or meas
 5. Shortcut:
     1. `h` hides point coordinates
     2. `d` delete the last point
-    3. `c` cleans the screen
+    3. `Esc` or `c` cleans the screen
     4. `p` hides the cross
